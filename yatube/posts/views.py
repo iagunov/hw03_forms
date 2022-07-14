@@ -81,11 +81,8 @@ def post_edit(request, post_id):
                 return HttpResponseRedirect(f'/posts/{post_id}/')
             return render(
                 request,
-                'posts/create_post.html', 
-                {
-                'form': form,
-                'is_edit': is_edit
-                }
+                'posts/create_post.html',
+                {'form': form,'is_edit': is_edit}
                 )
     else:
         return HttpResponseRedirect(f'/posts/{post_id}/')
