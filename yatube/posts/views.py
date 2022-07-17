@@ -69,20 +69,14 @@ def post_create(request):
 def post_edit(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     is_edit = True
-    # переменная is_edit часть ТЗ, без нее не проходят тесты
-    # ее функция изменять некоторые строки в create_post.html
-    # можно делать то же самое с помощью if Post и обойтись без нее
-    # но ТЗ и наставники настаивают на этой переменной
+    form = PostForm(request.POST, instance=post)
     if post.author == request.user and request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(f'/posts/{post_id}/')
-        return render(
-            request,
-            'posts/create_post.html',
-            {'form': form, 'is_edit': is_edit})
-    else:
-        return HttpResponseRedirect(f'/posts/{post_id}/')
-    form = PostForm(instance=post)
-    return render(request, 'posts/create_post.html', {'form': form})
+        return render(request, 'posts/create_post.html',
+                      {'form': form, 'is_edit': is_edit})
+    if post.author == request.user:
+        form = PostForm(instance=post)
+        return render(request, 'posts/create_post.html', {'form': form})
+    return HttpResponseRedirect(f'/posts/{post_id}/')
