@@ -14,4 +14,8 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Group)
 class GroupAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('slug', 'title', 'description')
+    list_filter = ('title', 'slug')
+    list_editable = ('title', 'description')
+    search_fields = ('slug', 'title', 'description')
+    empty_value_display = '-пусто-'

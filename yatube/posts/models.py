@@ -15,7 +15,7 @@ class Group(models.Model):
 
 
 class Post(models.Model):
-    text = models.TextField()
+    text = models.TextField(verbose_name='напиши что-нибудь классное здесь!')
     pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
         User,
@@ -27,11 +27,12 @@ class Post(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        related_name='posts'
+        related_name='posts',
+        verbose_name='у поста может быть группа, если захочешь...'
     )
 
     class Meta:
-        ordering = ['-pub_date']
+        ordering = (['-pub_date'])
 
     def __str__(self):
         return self.text

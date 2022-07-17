@@ -16,6 +16,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 NUMBER_POST = 10
+PAGINATOR_COUNT = 10
 
 # Application definition
 
