@@ -6,6 +6,7 @@ from .models import Group, Post
 from .my_paginator import my_paginator_def
 from .forms import PostForm
 
+
 User = get_user_model()
 
 
@@ -60,7 +61,7 @@ def post_create(request):
             form.save()
             return HttpResponseRedirect(f'/profile/{request.user.username}/')
         return render(request, 'posts/create_post.html', {'form': form})
-    return HttpResponseRedirect(f'/auth/login/')
+    return HttpResponseRedirect('/auth/login/')
     form = PostForm()
     return render(request, 'posts/create_post.html', {'form': form})
 
