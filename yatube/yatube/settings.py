@@ -13,7 +13,14 @@ SECRET_KEY = '#trq*x@)opm#wjiu@(d!nm1(e5xk@768bmq^ae5*m&exm53akv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '[::1]',
+    'testserver',
+]
+
 
 NUMBER_POST = 10
 PAGINATOR_COUNT = 10
