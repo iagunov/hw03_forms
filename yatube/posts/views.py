@@ -66,8 +66,8 @@ def post_create(request):
     return render(request, 'posts/create_post.html', {'form': form})
 
 
-def post_edit (request, post_id):
-    this_post = Post.objects.get (pk=post_id)
+def post_edit(request, post_id):
+    this_post = Post.objects.get(pk=post_id)
     if this_post.author.id != request.user.id:
         return redirect(f'/posts/{post_id}/')
     if request.method == 'POST':
@@ -85,4 +85,3 @@ def post_edit (request, post_id):
         'form': form
     }
     return render(request, 'posts/create_post.html', context)
-

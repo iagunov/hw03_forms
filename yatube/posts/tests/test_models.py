@@ -42,7 +42,8 @@ class PostModelTest(TestCase):
         for field, expected_value in field_verboses.items():
             with self.subTest(field=field):
                 self.assertEqual(
-                    task_post._meta.get_field(field).verbose_name, expected_value)
+                    task_post._meta.get_field(field).verbose_name,
+                    expected_value)
 
     def test_help_text(self):
         """Проверяем, что help_text в полях совпадает с ожидаемым."""
