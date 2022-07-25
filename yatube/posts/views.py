@@ -65,7 +65,6 @@ def post_create(request):
 
 
 def post_edit(request, post_id):
-    print(post_id)
     post = Post.objects.get(pk=post_id)
     if post.author.id != request.user.id:
         return HttpResponseRedirect(reverse(
